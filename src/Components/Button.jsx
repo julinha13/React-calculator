@@ -2,7 +2,7 @@ import React from 'react'
 import './Button.css'
 
 export default props =>
-{/* `` let me use javascript code*/}
+/* `` let me use javascript code*/
 
 <button 
 onClick={e => props.click && props.click(props.label)}
