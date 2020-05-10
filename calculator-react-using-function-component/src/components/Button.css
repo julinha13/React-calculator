@@ -1,0 +1,36 @@
+/* Te amo! Eu também te amo <3 */
+.Button{
+    border-radius: 40%;
+    text-align: center;
+    color: #fff;
+
+    background-color: #393b3b;
+    border: 0px;
+
+    margin: 5px;
+}
+
+.Button:active {
+    background-color: #393b3bcc;
+}
+
+.Button:focus {
+    outline: none;
+}
+
+.operation{
+    color: #3cad17;
+}
+
+.equal{
+    background-color: #3cad17;
+}
+
+.equal:active{
+    background-color: #3cad17cc;
+}
+
+
+.clear{
+    color: red;
+}
