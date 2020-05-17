@@ -8,8 +8,11 @@ import Display from '../components/Display'
 export default props =>{
     
     const [displayValue, setdisplayValue] = useState('')
-    const [values, setValues] = useState([null, null])
+    const [values, setValues] = useState([])
     const [operation, setOperation] = useState(null)
+
+    let auxOperation = null
+    let result = 0
     
 
     const displayLabel = (e) => {
@@ -19,26 +22,97 @@ export default props =>{
             setdisplayValue(e)
         }
 
-        if(values[0] !== null){
-            console.log("eu to no if eu tenho valor 1")
-            console.log(values)
+        if( values[0] !== undefined ){
+
+            if(values[1] !== undefined){
+                values[1] += e
+            }else{
+                values[1] = e
+            }
+            //setValues( [...values, values[1] == undefined ? e : values[1] += e] )
+            setValues( [...values, values[1] ] )
         }
     };
 
     const operator = (e) =>{
-        setValues([displayValue])
-        console.log(values)
 
-        setOperation(e)
-        displayLabel(e)
+        if(values[0] !== undefined && values[1] !== undefined){
+            console.log("expressao")
+            auxOperation = e
+            equal()
+        }else{
+            setValues([...values, displayValue])
+
+            setOperation(e)
+            displayLabel(e)
+        }
+
     };
 
-    const equal = (e)  => {
+    const equal = ()  => {
+        console.log("func igual")
+        doOperation()
+
+        if(auxOperation === null){
+            setOperation(null)
+            setValues([]);
+        }else{
+            setOperation(auxOperation)
+            let auxValues = [result]
+            setValues([... auxValues])
+        }
+
     };
+    
+    const doOperation = () =>{
+        console.log("do operation")
+        values[0] = parseFloat(values[0])
+        values[1] = parseFloat(values[1])
+
+        console.log(values[0])
+        console.log(values[1])
+        console.log(operation)
+
+        switch(operation){
+            case '%':
+                result = ( (values[0]/100) * values[1])
+            break;
+
+            case '/':
+                result = values[0] / values[1]
+            break;
+
+            case 'x':
+                result = values[0] * values[1]
+            break;
+
+            case '-':
+                result = values[0] - values[1]
+            break;
+
+            case '+':
+                result = values[0] + values[1]
+            break;
+
+            default:
+                alert("Operação inválida!")
+        }
+
+        if (auxOperation !== null){
+            setdisplayValue(result+auxOperation)
+        }else{
+            setdisplayValue(result)
+        }
+
+        console.log(result)
+        console.log(displayValue)
+
+    }
 
     const clear = () => {
         setdisplayValue('')
         setOperation(null)
+        setValues([])
     };
  
 
