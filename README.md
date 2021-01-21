@@ -2,12 +2,12 @@
 
 A very simple calculator created using react. 
 
-- [Local Setupe](#Setupe)
+- [Local Setup](#Setup)
 - [Install dependences](#Install-dependences)
 - [Run Locally](#prototipos-de-tela)
 - [Preview](#scrum)
 
-## Local Setupe
+## Local Setup
 ```sh
 $ git clone https://github.com/julinha13/React-calculator.git
 ```
