@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { evaluate } from 'mathjs';
 
-import Button from '../Components/Button';
-import Display from '../Components/Display';
+import Button from '../Components/Button/Button';
+import Display from '../Components/Display/Display';
 import './Calculator.css';
 
 const initialState = {
-    
     displayValue: '0',
     clearDisplay: false,
     operation: null,
@@ -29,10 +28,6 @@ export default class Calculator extends Component {
         this.setState({ ...initialState })
     }
 
-    // calculateStr(userInput) {
-    //     return new Function('return ' + userInput)();
-    // }
-
     setOperation(operation) {
 
         if (this.state.current === 0) {
@@ -46,12 +41,9 @@ export default class Calculator extends Component {
             const values = [...this.state.values];
 
             try {
-                const a = currentOperation;
-                console.log(a)
                 values[0] = evaluate( `${values[0]} ${currentOperation} ${values[1]}`)
                 
             }catch (e){
-
                 values[0] = this.state.values[0]
             }
 
